@@ -12,7 +12,7 @@ class BinaryTree {
     constructor() {
         this.root = null;
     }
-}
+
 // funcion del arbol para 
 insert(valor){
     // crear nodo
@@ -41,16 +41,41 @@ insert(valor){
                     return true;
                 }
                 // te mueves al nodo de la derecha 
-                currentNode=currentNode.derecha;
+                currentNode = currentNode.derecha;
             }
         }
     }
 }
-buscar(valor){
-    // se inicia la busqueda en la raiz
-let currentNode=this.root;
+buscar(valor) {
+    // Se inicia la búsqueda en la raíz
+    let nodoActual = this.raiz;
 
-// recorre el arbol hasta que se encuentre una coincidencia
-
-
+    // Recorre el árbol hasta que se encuentre una coincidencia
+    while (nodoActual !== null) {
+        // Si encuentras el valor, retorna
+        if (valor === nodoActual.valor) {
+            return true;
+        }
+        // Si el valor es mayor ve al sub-árbol izquierdo
+        else if (valor < nodoActual.valor) {
+            nodoActual = nodoActual.izquierda;
+        }
+        // Si el valor es mayor ve al sub-árbol derecho
+        else {
+            nodoActual = nodoActual.derecha;
+        }
+    }
+    // Si no se encuentra el valor retorna un falso
+    return false;
 }
+}
+// Ejemplo de uso
+const binaryTree = new BinaryTree();
+binaryTree.insertar(5);
+binaryTree.insertar(2);
+binaryTree.insertar(3);
+binaryTree.insertar(8);
+
+//Método buscar y notificar si encuentra primera coincidencia
+console.log(tree.buscar(4)); // Output: true
+console.log(tree.buscar(6)); // Output: false
